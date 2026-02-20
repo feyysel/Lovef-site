@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My World 💕</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffb6d9, #ff69b4);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* GLOWING NAME */
+        .glow-name {
+            margin-top: 60px;
+            font-size: 50px;
+            color: white;
+            text-shadow: 0 0 10px #fff,
+                         0 0 20px #ff1493,
+                         0 0 30px #ff1493,
+                         0 0 40px #ff69b4;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff,
+                             0 0 20px #ff1493;
+            }
+            to {
+                text-shadow: 0 0 20px #fff,
+                             0 0 40px #ff1493,
+                             0 0 60px #ff69b4;
+            }
+        }
+
+        /* HEART BUTTON */
+        .heart-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 20px;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff69b4;
+            transition: 0.3s;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.1);
+            background-color: #ff69b4;
+        }
+
+        /* BUBBLES */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            opacity: 0.8;
+            animation: floatUp linear infinite;
+        }
+
+        .bubble img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
+        }
+
+        /* HEARTS */
+        .heart {
+            position: absolute;
+            animation: floatHeart 10s linear infinite;
+        }
+
+        @keyframes floatHeart {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- CHANGE HER NAME HERE -->
+<h1 class="glow-name">ABEBAYE 💖</h1>
+
+<button class="heart-btn" onclick="enterHeart()">❤️ Click My Heart</button><br>
+<a href="love.html"><button class="heart-btn">💕Let's see what i made for you💕</button></a>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+    function enterHeart() {
+        alert("You are my heart forever 💕");
+        // you can change this to go to another page:
+        // window.location.href = "index.html";
+    }
+
+    /* DIFFERENT PHOTOS HERE */
+    let photos = [
+        "aaaa.jpg",
+        "bbbb.jpg",
+        "cccc.jpg",
+        "dddd.jpg",
+        "IMG_20250315_062734_786.jpg"
+    ];
+
+    /* CREATE RANDOM BUBBLES */
+    for (let i = 0; i < 40; i++) {
+
+        let bubble = document.createElement("div");
+        bubble.className = "bubble";
+
+        let size = Math.random() * 120 + 80;
+        bubble.style.width = size + "px";
+        bubble.style.height = size + "px";
+        bubble.style.left = Math.random() * 100 + "vw";
+        bubble.style.animationDuration = (Math.random() * 10 + 10) + "s";
+
+        let img = document.createElement("img");
+
+        // RANDOM PHOTO
+        let randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+        img.src = randomPhoto;
+
+        bubble.appendChild(img);
+        document.body.appendChild(bubble);
+    }
+
+    /* FLOATING HEARTS */
+    for (let i = 0; i < 50; i++) {
+
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+        document.body.appendChild(heart);
+    }
+
+</script>
+
+</body>
+</html>
